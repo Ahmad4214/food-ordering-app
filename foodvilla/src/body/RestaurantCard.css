@@ -1,0 +1,14 @@
+
+.rescard{
+    width: 200px;
+    border: 1px solid;
+    margin: 10px;
+}
+.rescard img{
+    width: 100%;
+}
+.cardgrid{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
