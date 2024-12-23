@@ -15,18 +15,21 @@ const RestaurantCard = () => {
     let [fillteredRestaurant, setFillteredRestaurant] = useState([]);
 
     useEffect(()=>{
+        async function getResturantsFromSwiggy(){
+            const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.7040592&lng=77.10249019999999&carousel=true&third_party_vendor=1");
+            console.log(data);
+            const jsondata = await data.json();
+            const dehlirestaurant = jsondata?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants 
+            console.log(dehlirestaurant);
+            setRestaurant(dehlirestaurant);
+            setFillteredRestaurant(dehlirestaurant);
+        }
         getResturantsFromSwiggy();
     },[]);
 
-    async function getResturantsFromSwiggy(){
-        const data = await fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.7040592&lng=77.10249019999999&carousel=true&third_party_vendor=1");
-        console.log(data);
-        const jsondata = await data.json();
-        const dehlirestaurant = jsondata?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants 
-        console.log(dehlirestaurant);
-        setRestaurant(dehlirestaurant);
-        setFillteredRestaurant(dehlirestaurant);
-    }
+    
+    console.log('render');
+    
 
     return (restaurant?.length===0) ? <Shimmer/> : (
         <>
