@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './header.css'
 const Header = () => {
+    const [loggedIn, setLoggedIn] = useState(true);
     return (
         <>
             <div className='header'>
@@ -15,6 +16,7 @@ const Header = () => {
                     <li>Cart</li>
                 </ul>
 
+                {(loggedIn)? <button onClick={()=>setLoggedIn(false)}>LogOut</button> : <button onClick={()=>{setLoggedIn(true)}}>LogIn</button>}
             </div>
         </>
     )
