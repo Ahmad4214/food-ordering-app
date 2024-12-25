@@ -12,3 +12,7 @@
     flex-wrap: wrap;
     margin: 10px;
 }
+.cardlink{
+    text-decoration: none;
+    color: inherit;
+}
